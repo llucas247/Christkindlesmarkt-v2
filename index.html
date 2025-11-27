@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ein Abend auf dem Nürnberger Christkindlesmarkt ✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Persönliche Einladung an Lena auf den Nürnberger Christkindlesmarkt – wähle deinen Wunschtermin für unser Date." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Elegante Serif + Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #090a10;
+      --bg-card: rgba(14, 16, 25, 0.9);
+      --red: #b3202a;
+      --red-soft: #d9434b;
+      --cream: #f8f1e7;
+      --gold: #d4af37;
+      --gold-soft: #f1d28b;
+      --green: #1f3b2f;
+      --text: #fdf7f0;
+      --muted: #c2b8aa;
+      --border-soft: rgba(255, 255, 255, 0.08);
+      --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.65);
+      --radius-xl: 24px;
+      --radius-xxl: 32px;
+      --transition-fast: 180ms ease-out;
+      --transition-med: 260ms ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      background: radial-gradient(circle at top, #341019 0, #090a10 55%, #020308 100%);
+      color: var(--text);
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      padding: 24px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Schneefall */
+    body::before,
+    body::after {
+      content: "";
+      pointer-events: none;
+      position: fixed;
+      top: -100vh;
+      left: 0;
+      width: 200%;
+      height: 300%;
+      background-image:
+        radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.8) 50%, transparent 52%),
+        radial-gradient(2px 2px at 120px 130px, rgba(255,255,255,0.7) 50%, transparent 52%),
+        radial-gradient(3px 3px at 220px 80px, rgba(255,255,255,0.6) 50%, transparent 52%),
+        radial-gradient(2px 2px at 320px 180px, rgba(255,255,255,0.8) 50%, transparent 52%);
+      opacity: 0.4;
+      animation: snow 50s linear infinite;
+      z-index: -2;
+    }
+
+    body::after {
+      animation-duration: 80s;
+      opacity: 0.2;
+    }
+
+    @keyframes snow {
+      to {
+        transform: translate3d(-25%, 100vh, 0);
+      }
+    }
+
+    .page {
+      max-width: 960px;
+      width: 100%;
+      border-radius: var(--radius-xxl);
+      background:
+        radial-gradient(circle at top left, rgba(212, 175, 55, 0.16), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(179, 32, 42, 0.22), transparent 55%),
+        linear-gradient(135deg, rgba(14, 16, 25, 0.96), rgba(10, 12, 20, 0.98));
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(255,255,255,0.12);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(16px);
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top center, rgba(255,255,255,0.06), transparent 60%);
+      mix-blend-mode: screen;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: 32px;
+      padding: 32px 32px 28px;
+    }
+
+    @media (max-width: 840px) {
+      body {
+        padding: 16px;
+      }
+      .layout {
+        grid-template-columns: 1fr;
+        padding: 24px 18px 18px;
+      }
+    }
+
+    /* Linke Seite – Hero & Text */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(15, 20, 30, 0.9);
+      border: 1px solid rgba(244, 220, 165, 0.4);
+      color: var(--gold-soft);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #ffe8a2, #f1c166);
+      box-shadow: 0 0 8px rgba(241, 193, 102, 0.9);
+    }
+
+    h1 {
+      font-family: "Playfair Display", "Georgia", serif;
+      font-weight: 700;
+      font-size: clamp(2.3rem, 3vw, 2.8rem);
+      line-height: 1.12;
+      color: var(--cream);
+      text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    h1 span.accent {
+      color: var(--gold-soft);
+    }
+
+    .hero-lead {
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .hero-lead strong {
+      color: var(--cream);
+      font-weight: 500;
+    }
+
+    .hero-facts {
+      margin-top: 8px;
+      padding: 12px 14px;
+      border-radius: 18px;
+      background: rgba(16, 23, 32, 0.9);
+      border: 1px solid rgba(255,255,255,0.06);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-fact-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(248,241,231,0.9);
+      margin-bottom: 3px;
+    }
+
+    .hero-fact-value {
+      color: var(--gold-soft);
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    @media (max-width: 840px) {
+      .hero-facts {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 4px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      border: none;
+      position: relative;
+      cursor: pointer;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-size: 0.94rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, var(--red), var(--red-soft));
+      color: #fff;
+      box-shadow:
+        0 14px 35px rgba(0,0,0,0.6),
+        0 0 0 1px rgba(255,255,255,0.1);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+    }
+
+    .btn-primary::after {
+      content: "✨";
+      font-size: 1rem;
+      transform: translateY(1px);
+      transition: transform var(--transition-fast);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow:
+        0 18px 40px rgba(0,0,0,0.75),
+        0 0 0 1px rgba(255,255,255,0.16);
+      filter: brightness(1.05);
+    }
+
+    .btn-primary:hover::after {
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-size: 0.86rem;
+      background: rgba(11,15,24,0.6);
+      color: var(--muted);
+      border: 1px solid rgba(255,255,255,0.12);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-ghost span.dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #79c8a5, #3da37c);
+      box-shadow: 0 0 8px rgba(61,163,124,0.8);
+    }
+
+    /* Rechte Seite – Markt & Formular */
+    .side {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .market-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(145deg, rgba(15,19,29,0.9), rgba(15,24,32,0.96));
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 14px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 840px) {
+      .market-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .market-photo {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      min-height: 180px;
+      background-image:
+        linear-gradient(to top, rgba(5,5,10,0.85), rgba(5,5,10,0.15)),
+        url("https://images.unsplash.com/photo-1513639725746-c5d3e861f32a?auto=format&fit=crop&w=1200&q=80");
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 16px 45px rgba(0,0,0,0.75);
+      isolation: isolate;
+    }
+
+    .market-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255,215,160,0.35), transparent 60%),
+        radial-gradient(circle at 70% 80%, rgba(255,205,120,0.25), transparent 60%);
+      mix-blend-mode: screen;
+      opacity: 0.9;
+    }
+
+    .market-photo-label {
+      position: absolute;
+      left: 14px;
+      bottom: 10px;
+      padding: 6px 11px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      background: rgba(10,12,20,0.85);
+      color: var(--cream);
+      display: inline-flex;
+      gap: 6px;
+      align-items: center;
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      z-index: 2;
+    }
+
+    .market-photo-label span.icon {
+      font-size: 0.9rem;
+    }
+
+    .market-copy {
+      font-size: 0.86rem;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .market-copy h2 {
+      font-family: "Playfair Display", "Georgia", serif;
+      font-size: 1.08rem;
+      color: var(--cream);
+      margin-bottom: 4px;
+    }
+
+    .market-list {
+      margin-top: 4px;
+      padding-left: 16px;
+    }
+
+    .market-list li {
+      margin-bottom: 2px;
+    }
+
+    /* Formular-Karte */
+    .card {
+      border-radius: var(--radius-xl);
+      background: rgba(9,12,20,0.95);
+      border: 1px solid var(--border-soft);
+      padding: 18px 16px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .card-title {
+      font-size: 0.98rem;
+      font-weight: 500;
+      color: var(--cream);
+    }
+
+    .card-subtitle {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .badge-soft {
+      font-size: 0.72rem;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(48,72,58,0.85);
+      color: #d5f5e3;
+      border: 1px solid rgba(131,190,157,0.6);
+      display: inline-flex;
+      gap: 5px;
+      align-items: center;
+      white-space: nowrap;
+    }
+
+    .badge-soft span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #bff3d4, #6ad19a);
+      box-shadow: 0 0 6px rgba(106,209,154,0.8);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 0.82rem;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 10px;
+    }
+
+    @media (max-width: 540px) {
+      .field-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    label {
+      color: var(--muted);
+    }
+
+    .label-main {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+    }
+
+    .label-main span.optional {
+      font-size: 0.76rem;
+      color: rgba(194,184,170,0.9);
+    }
+
+    input[type="text"],
+    input[type="date"],
+    select {
+      width: 100%;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 8px 12px;
+      font-size: 0.86rem;
+      background: rgba(6, 9, 18, 0.95);
+      color: var(--cream);
+      outline: none;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), transform 120ms ease-out;
+      appearance: none;
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      filter: invert(1);
+      cursor: pointer;
+    }
+
+    input[type="text"]:focus,
+    input[type="date"]:focus,
+    select:focus {
+      border-color: rgba(241,193,102,0.9);
+      box-shadow: 0 0 0 1px rgba(241,193,102,0.5), 0 0 0 12px rgba(241,193,102,0.08);
+      background: rgba(8,11,22,0.98);
+      transform: translateY(-0.5px);
+    }
+
+    select:disabled,
+    input:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    .helper {
+      font-size: 0.74rem;
+      color: rgba(182,171,157,0.95);
+    }
+
+    .helper strong {
+      color: var(--gold-soft);
+      font-weight: 500;
+    }
+
+    .error {
+      font-size: 0.76rem;
+      color: #ffb3b8;
+      min-height: 1em;
+    }
+
+    .success {
+      font-size: 0.8rem;
+      color: #b8f3cf;
+    }
+
+    .actions-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .mini-note {
+      font-size: 0.74rem;
+      color: rgba(190,178,163,0.9);
+    }
+
+    .mini-note span.lock {
+      font-size: 0.84rem;
+      margin-right: 4px;
+    }
+
+    .btn-submit {
+      border: none;
+      border-radius: 999px;
+      padding: 9px 18px;
+      font-size: 0.86rem;
+      font-weight: 500;
+      background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+      color: #1a1207;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      cursor: pointer;
+      box-shadow:
+        0 12px 26px rgba(0,0,0,0.68),
+        0 0 0 1px rgba(255,255,255,0.16);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+    }
+
+    .btn-submit span.icon {
+      font-size: 0.95rem;
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.12);
+    }
+
+    .btn-submit:not(:disabled):hover {
+      transform: translateY(-1px);
+      filter: brightness(1.03);
+      box-shadow:
+        0 15px 32px rgba(0,0,0,0.75),
+        0 0 0 1px rgba(255,255,255,0.2);
+    }
+
+    .confirm-card {
+      margin-top: 6px;
+      border-radius: 18px;
+      padding: 12px 13px;
+      background: radial-gradient(circle at left, rgba(190,243,207,0.15), rgba(5,10,12,0.95));
+      border: 1px solid rgba(139, 214, 167, 0.55);
+      font-size: 0.8rem;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .confirm-card .icon {
+      font-size: 1.1rem;
+      margin-top: 1px;
+    }
+
+    .confirm-card strong {
+      color: #d8fbe6;
+      font-weight: 600;
+    }
+
+    footer {
+      padding: 10px 24px 14px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.74rem;
+      color: rgba(190,178,163,0.88);
+      background: radial-gradient(circle at left, rgba(179,32,42,0.24), transparent 55%);
+    }
+
+    @media (max-width: 640px) {
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+    }
+
+    .footer-tag {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.7rem;
+    }
+
+    .footer-tag span {
+      color: var(--gold-soft);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="layout">
+      <!-- Linke Spalte: persönliche Einladung -->
+      <section class="hero">
+        <div class="pill">
+          <span class="pill-dot"></span>
+          <span>Einladung auf den Nürnberger Christkindlesmarkt</span>
+        </div>
+
+        <header>
+          <h1>
+            Lena, hast du Lust auf einen
+            <span class="accent">glitzernden Abend</span>
+            auf dem Christkindlesmarkt mit mir?
+          </h1>
+        </header>
+
+        <p class="hero-lead">
+          Zwischen dem Duft von <strong>Nürnberger Lebkuchen</strong>, Glühwein
+          und den rot-weißen Holzbuden des berühmten
+          <strong>„Städtleins aus Holz und Tuch“</strong>
+          möchte ich dich, <strong>Lena</strong>, zu einem gemeinsamen Abend auf dem
+          <strong>Nürnberger Christkindlesmarkt</strong> einladen.
+          Such dir einfach einen Termin aus, an dem wir uns in das Lichtermeer stürzen. ✨
+        </p>
+
+        <div class="hero-facts">
+          <div>
+            <div class="hero-fact-label">Warum gerade der Christkindlesmarkt?</div>
+            <div class="hero-fact-value">Einer der bekanntesten Weihnachtsmärkte der Welt</div>
+            <p>Rund um die Frauenkirche auf dem Hauptmarkt warten über 100 stimmungsvoll geschmückte Buden mit traditionellem Christbaumschmuck, Rauschgoldengeln, Zwetschgenmännla und vielen süßen Leckereien auf uns.</p>
+          </div>
+          <div>
+            <div class="hero-fact-label">Was ich mir vorstelle</div>
+            <div class="hero-fact-value">Glühwein, Lichter &amp; Zeit zu zweit</div>
+            <p>Gemütlich über den Markt schlendern, etwas Leckeres essen, vielleicht ein kleines Andenken aussuchen – und einfach einen warmen, entspannten Abend miteinander genießen.</p>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <button class="btn-primary" type="button" id="scrollToForm">
+            Wunschtermin auswählen
+          </button>
+          <div class="btn-ghost">
+            <span class="dot"></span>
+            <span>Nur Tage, an denen ich wirklich Zeit habe</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Rechte Spalte: Marktbild + Termin-Auswahl -->
+      <section class="side" id="booking-section">
+        <article class="market-card">
+          <div class="market-photo">
+            <div class="market-photo-label">
+              <span class="icon">🎄</span>
+              <span>Hauptmarkt · Nürnberger Altstadt</span>
+            </div>
+          </div>
+          <div class="market-copy">
+            <h2>Nürnberger Christkindlesmarkt</h2>
+            <p>
+              Rund um die Frauenkirche auf dem Hauptmarkt entsteht jeden Winter das berühmte
+              <strong>„Städtlein aus Holz und Tuch“</strong>: Über 100 traditionell geschmückte Buden,
+              Lichterketten, der Prolog des Christkindes und der Duft von gebrannten Mandeln machen den
+              Christkindlesmarkt zu einem der bekanntesten Weihnachtsmärkte der Welt.
+            </p>
+            <ul class="market-list">
+              <li>traditionelle Holzbuden mit handgemachtem Weihnachtsschmuck</li>
+              <li>Nürnberger Lebkuchen, Rostbratwürste &amp; Glühwein</li>
+              <li>Zwetschgenmännla, Rauschgoldengel &amp; nostalgische Deko</li>
+              <li>die perfekte Kulisse für ein gemütliches Weihnachtsdate</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card" id="form-card">
+          <header class="card-header">
+            <div>
+              <div class="card-title">Wähle unseren Abend aus ✨</div>
+              <p class="card-subtitle">Alle Termine sind so eingestellt, dass ich Zeit für dich habe.</p>
+            </div>
+            <div class="badge-soft">
+              <span class="dot"></span>
+              <span>Nur freie Tage</span>
+            </div>
+          </header>
+
+          <form id="date-form">
+            <div class="field">
+              <div class="label-main">
+                <label for="name">Wie darf ich dich ansprechen?</label>
+                <span class="optional">optional</span>
+              </div>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                autocomplete="name"
+                placeholder="Lena"
+                value="Lena"
+              />
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <div class="label-main">
+                  <label for="date">Datum</label>
+                  <span class="optional">nur meine freien Tage</span>
+                </div>
+                <input
+                  type="date"
+                  id="date"
+                  name="date"
+                  required
+                  min="2025-11-28"
+                  max="2025-12-23"
+                />
+              </div>
+
+              <div class="field">
+                <label for="time">Uhrzeit</label>
+                <select id="time" name="time" disabled required>
+                  <option value="">Bitte zuerst ein Datum wählen</option>
+                </select>
+              </div>
+            </div>
+
+            <p class="helper">
+              Frei sind für unser Date:
+              <strong>28.11.–02.12., 05.12., 06.12. ab 16&nbsp;Uhr, 08.12.–12.12., 15.12.–18.12., 21.12.–23.12.</strong>
+            </p>
+
+            <div class="error" id="error"></div>
+            <div class="success" id="success"></div>
+
+            <div class="actions-row">
+              <p class="mini-note">
+                <span class="lock">🔒</span>
+                Deine Auswahl wird nur verwendet, um mir eine Mail mit unserem Date zu schicken.
+              </p>
+              <button class="btn-submit" type="submit" id="submitBtn" disabled>
+                <span class="icon">📨</span>
+                Einladung abschicken
+              </button>
+            </div>
+
+            <div class="confirm-card" id="confirmCard" style="display:none;">
+              <div class="icon">💌</div>
+              <div>
+                <strong>Danke! Dein Date ist bei mir angekommen.</strong><br />
+                Ich melde mich bei dir mit den letzten Details – und freu mich schon sehr auf unseren Abend.
+              </div>
+            </div>
+          </form>
+        </article>
+      </section>
+    </div>
+
+    <footer>
+      <div class="footer-tag">
+        <span>Christkindlesmarkt ·</span> Nürnberger Altstadt · Glühwein inklusive
+      </div>
+      <div>PS: Wenn dir mehrere Termine passen, darfst du gern einfach deinen Lieblingsabend auswählen.</div>
+    </footer>
+  </div>
+
+  <script>
+    // ---- Deine freien Tage (Jahr 2025) ----
+    const allowedDatesConfig = {
+      "2025-11-28": { minHour: 15 },
+      "2025-11-29": { minHour: 15 },
+      "2025-11-30": { minHour: 15 },
+      "2025-12-01": { minHour: 15 },
+      "2025-12-02": { minHour: 15 },
+      "2025-12-05": { minHour: 15 },
+      "2025-12-06": { minHour: 16 }, // ab 16 Uhr
+      "2025-12-08": { minHour: 15 },
+      "2025-12-09": { minHour: 15 },
+      "2025-12-10": { minHour: 15 },
+      "2025-12-11": { minHour: 15 },
+      "2025-12-12": { minHour: 15 },
+      "2025-12-15": { minHour: 15 },
+      "2025-12-16": { minHour: 15 },
+      "2025-12-17": { minHour: 15 },
+      "2025-12-18": { minHour: 15 },
+      "2025-12-21": { minHour: 15 },
+      "2025-12-22": { minHour: 15 },
+      "2025-12-23": { minHour: 15 }
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const dateInput = document.getElementById("date");
+      const timeSelect = document.getElementById("time");
+      const errorEl = document.getElementById("error");
+      const successEl = document.getElementById("success");
+      const submitBtn = document.getElementById("submitBtn");
+      const form = document.getElementById("date-form");
+      const confirmCard = document.getElementById("confirmCard");
+      const scrollToFormBtn = document.getElementById("scrollToForm");
+      const bookingSection = document.getElementById("booking-section");
+
+      if (scrollToFormBtn && bookingSection) {
+        scrollToFormBtn.addEventListener("click", () => {
+          bookingSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      }
+
+      function clearMessages() {
+        errorEl.textContent = "";
+        successEl.textContent = "";
+        confirmCard.style.display = "none";
+      }
+
+      function isAllowedDate(dateStr) {
+        return Object.prototype.hasOwnProperty.call(allowedDatesConfig, dateStr);
+      }
+
+      function populateTimeOptions(dateStr) {
+        const config = allowedDatesConfig[dateStr];
+        const minHour = config?.minHour ?? 15;
+        const maxHour = 21; // bis 21 Uhr
+        const stepMinutes = 60;
+
+        timeSelect.innerHTML = "";
+        for (let hour = minHour; hour <= maxHour; hour++) {
+          const value = String(hour).padStart(2, "0") + ":00";
+          const opt = document.createElement("option");
+          opt.value = value;
+          opt.textContent = value + " Uhr";
+          timeSelect.appendChild(opt);
+        }
+
+        timeSelect.disabled = false;
+        submitBtn.disabled = false;
+      }
+
+      dateInput.addEventListener("change", () => {
+        clearMessages();
+        const selected = dateInput.value;
+
+        if (!selected) {
+          timeSelect.innerHTML = '<option value="">Bitte zuerst ein Datum wählen</option>';
+          timeSelect.disabled = true;
+          submitBtn.disabled = true;
+          return;
+        }
+
+        if (!isAllowedDate(selected)) {
+          timeSelect.innerHTML = '<option value="">An diesem Tag habe ich leider keine Zeit</option>';
+          timeSelect.disabled = true;
+          submitBtn.disabled = true;
+          errorEl.textContent = "An diesem Tag kann ich leider nicht – such dir gern einen anderen Abend aus ✨";
+          return;
+        }
+
+        errorEl.textContent = "";
+        populateTimeOptions(selected);
+      });
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        clearMessages();
+
+        const name = document.getElementById("name").value.trim();
+        const date = dateInput.value;
+        const time = timeSelect.value;
+
+        if (!date || !time || !isAllowedDate(date)) {
+          errorEl.textContent = "Bitte wähle ein gültiges Datum und eine Uhrzeit aus.";
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Wird gesendet...";
+
+        try {
+          const response = await fetch("/api/send-date", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name,
+              date,
+              time,
+              context: "Nürnberger Christkindlesmarkt Date"
+            })
+          });
+
+          if (!response.ok) {
+            throw new Error("Server error");
+          }
+
+          successEl.textContent = "Deine Auswahl wurde gespeichert und an mich verschickt. 💫";
+          confirmCard.style.display = "flex";
+        } catch (err) {
+          console.error(err);
+          errorEl.textContent = "Ups – da ist technisch etwas schiefgelaufen. Versuch es bitte kurz später noch einmal.";
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<span class="icon">📨</span> Einladung abschicken';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
